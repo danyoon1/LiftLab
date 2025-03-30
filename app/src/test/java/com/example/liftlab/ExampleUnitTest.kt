@@ -1,4 +1,4 @@
-package com.example.liftlab
+package com.a27.liftlab
 
 import org.junit.Test
 

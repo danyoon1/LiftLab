@@ -1,4 +1,4 @@
-package com.example.liftlab.ui.theme
+package com.a27.liftlab.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
