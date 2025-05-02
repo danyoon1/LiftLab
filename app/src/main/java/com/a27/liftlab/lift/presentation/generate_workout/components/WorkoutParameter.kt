@@ -45,12 +45,8 @@ fun WorkoutParameter(
             .padding(12.dp)
             .fillMaxWidth(),
         shape = RectangleShape,
-        border = BorderStroke(
-            width = 1.dp,
-            color = MaterialTheme.colorScheme.primary
-        ),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainer,
+            containerColor = MaterialTheme.colorScheme.background,
             contentColor = contentColor
         )
     ) {

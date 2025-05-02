@@ -38,7 +38,7 @@ fun WorkoutExerciseItem(
             .fillMaxWidth(),
         shape = RectangleShape,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainer,
+            containerColor = MaterialTheme.colorScheme.background,
             contentColor = contentColor
         )
     ) {
