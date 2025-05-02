@@ -26,6 +26,8 @@ import com.example.liftlab.R
 
 @Composable
 fun HomeScreen(
+    onNavigateToViewWorkout: () -> Unit,
+    onNavigateToGenerateWorkout: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -55,15 +57,18 @@ fun HomeScreen(
         Spacer(modifier = Modifier.height(50.dp))
 
         HomeButton(
-            title = "View Workouts"
+            title = "View Workouts",
+            onAction = onNavigateToViewWorkout
         )
 
         HomeButton(
-            title = "Generate Workout"
+            title = "Generate Workout",
+            onAction = onNavigateToGenerateWorkout
         )
 
         HomeButton(
-            title = "View Diet Plans"
+            title = "View Diet Plans",
+            onAction = onNavigateToViewWorkout
         )
     }
 }
@@ -72,6 +77,9 @@ fun HomeScreen(
 @Composable
 private fun HomeScreenPreview() {
     LiftLabTheme {
-        HomeScreen()
+        HomeScreen(
+            onNavigateToViewWorkout = {},
+            onNavigateToGenerateWorkout = {}
+        )
     }
 }

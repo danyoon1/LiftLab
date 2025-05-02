@@ -1,4 +1,4 @@
-package com.a27.liftlab.lift.presentation.home.components
+package com.a27.liftlab.lift.presentation.generate_workout.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,13 +20,13 @@ import androidx.compose.ui.unit.sp
 import com.a27.liftlab.ui.theme.LiftLabTheme
 
 @Composable
-fun HomeButton(
+fun GenerateWorkoutButton(
     title: String,
     onAction: () -> Unit,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     Button(
-        onClick = {onAction()},
+        onClick = { onAction() },
         modifier = Modifier
             .padding(10.dp)
             .width(250.dp)
@@ -54,11 +54,8 @@ fun HomeButton(
 
 @Preview
 @Composable
-private fun HomeButtonPreview() {
+private fun GenerateWorkoutButtonPreview() {
     LiftLabTheme {
-        HomeButton(
-            title = "type shit",
-            onAction = {}
-        )
+        GenerateWorkoutButton("Generate Workout", {})
     }
 }

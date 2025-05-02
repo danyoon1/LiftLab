@@ -8,9 +8,15 @@ import kotlinx.serialization.Serializable
 @Serializable
 data object HomeDestination
 
-fun NavGraphBuilder.homeScreen() {
+fun NavGraphBuilder.homeScreen(
+    onNavigateToViewWorkout: () -> Unit,
+    onNavigateToGenerateWorkout: () -> Unit
+) {
     composable<HomeDestination> {
-        HomeScreen()
+        HomeScreen(
+            onNavigateToViewWorkout = onNavigateToViewWorkout,
+            onNavigateToGenerateWorkout = onNavigateToGenerateWorkout
+        )
     }
 }
 

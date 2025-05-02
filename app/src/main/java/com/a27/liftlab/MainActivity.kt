@@ -12,12 +12,17 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.a27.liftlab.lift.presentation.generate_workout.generateWorkoutScreen
+import com.a27.liftlab.lift.presentation.generate_workout.navigateToGenerateWorkout
 import com.a27.liftlab.lift.presentation.home.HomeDestination
 import com.a27.liftlab.lift.presentation.home.homeScreen
 import com.a27.liftlab.lift.presentation.introduction.introductionScreen
 import com.a27.liftlab.lift.presentation.navigation.BottomNavigationBar
 import com.a27.liftlab.lift.presentation.view_workout.ViewWorkoutDestination
+import com.a27.liftlab.lift.presentation.view_workout.navigateToViewWorkout
 import com.a27.liftlab.lift.presentation.view_workout.viewWorkoutScreen
+import com.a27.liftlab.lift.presentation.workout_plan.navigateToWorkoutPlan
+import com.a27.liftlab.lift.presentation.workout_plan.workoutPlanScreen
 import com.a27.liftlab.ui.theme.LiftLabTheme
 
 class MainActivity : ComponentActivity() {
@@ -40,12 +45,19 @@ class MainActivity : ComponentActivity() {
                     ) { innerPadding ->
                         NavHost(
                             navController = navController,
-                            startDestination = ViewWorkoutDestination,
+                            startDestination = HomeDestination,
                             modifier = Modifier.padding(innerPadding)
                         ) {
-                            homeScreen()
+                            homeScreen(
+                                onNavigateToViewWorkout = { navController.navigateToViewWorkout() },
+                                onNavigateToGenerateWorkout = { navController.navigateToGenerateWorkout() }
+                            )
                             introductionScreen()
                             viewWorkoutScreen()
+                            generateWorkoutScreen(
+                                onNavigateToWorkoutPlan = { navController.navigateToWorkoutPlan() }
+                            )
+                            workoutPlanScreen()
                         }
                     }
                 }
