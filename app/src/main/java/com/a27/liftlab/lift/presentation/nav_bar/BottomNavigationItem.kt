@@ -1,4 +1,4 @@
-package com.a27.liftlab.lift.presentation.nav_bar.navigation
+package com.a27.liftlab.lift.presentation.nav_bar
 
 import androidx.compose.ui.graphics.vector.ImageVector
 

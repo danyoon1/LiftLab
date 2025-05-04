@@ -21,13 +21,12 @@ import com.a27.liftlab.lift.presentation.home_route.generate_diet_plan.component
 import com.a27.liftlab.lift.presentation.home_route.generate_diet_plan.components.DietParameter
 import com.a27.liftlab.lift.presentation.home_route.generate_diet_plan.components.GenerateDietPlanButton
 import com.a27.liftlab.lift.presentation.home_route.generate_diet_plan.components.GenerateDietPlanName
-import com.a27.liftlab.lift.presentation.home_route.generate_workout.components.GenerateWorkoutButton
 import com.a27.liftlab.ui.theme.LiftLabTheme
 import com.example.liftlab.R
 
 @Composable
 fun GenerateDietPlanScreen(
-    onNavigateToWorkoutPlan: () -> Unit,
+    onNavigateToDietPlan: () -> Unit,
     modifier: Modifier = Modifier,
     contentColor: Color = MaterialTheme.colorScheme.onSurface
 ) {
@@ -78,7 +77,7 @@ fun GenerateDietPlanScreen(
         ) {
             GenerateDietPlanButton(
                 title = "Generate Diet Plan",
-                onAction = {}
+                onAction = { onNavigateToDietPlan() }
             )
         }
     }

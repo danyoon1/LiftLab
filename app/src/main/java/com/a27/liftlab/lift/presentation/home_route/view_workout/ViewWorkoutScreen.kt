@@ -20,7 +20,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.a27.liftlab.lift.presentation.home_route.view_workout.components.ViewWorkoutButton
-import com.a27.liftlab.lift.presentation.home_route.view_workout.components.WorkoutItem
+import com.a27.liftlab.lift.presentation.home_route.view_workout.components.ViewWorkoutItem
 import com.a27.liftlab.ui.theme.LiftLabTheme
 
 @Composable
@@ -48,7 +48,7 @@ fun ViewWorkoutScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(tempWorkoutItems) { item ->
-                WorkoutItem(item)
+                ViewWorkoutItem(item)
                 HorizontalDivider()
             }
         }

@@ -35,4 +35,13 @@ sealed class Destination {
     @Serializable
     data object WorkoutPlanDestination: Destination()
 
+    @Serializable
+    data object ViewDietPlanDestination: Destination()
+
+    @Serializable
+    data object GenerateDietPlanDestination: Destination()
+
+    @Serializable
+    data object DietPlanDestination: Destination()
+
 }

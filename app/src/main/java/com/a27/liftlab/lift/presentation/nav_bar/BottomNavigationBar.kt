@@ -1,6 +1,5 @@
-package com.a27.liftlab.lift.presentation.nav_bar.navigation
+package com.a27.liftlab.lift.presentation.nav_bar
 
-import android.util.Log
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home

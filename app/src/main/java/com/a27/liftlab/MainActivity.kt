@@ -21,8 +21,13 @@ import com.a27.liftlab.lift.presentation.auth_route.login.loginScreen
 import com.a27.liftlab.lift.presentation.auth_route.login.navigateToLoginScreen
 import com.a27.liftlab.lift.presentation.auth_route.sign_up.navigateToSignUpScreen
 import com.a27.liftlab.lift.presentation.auth_route.sign_up.signUpScreen
-import com.a27.liftlab.lift.presentation.home_route.home.navigateToHome
-import com.a27.liftlab.lift.presentation.nav_bar.navigation.BottomNavigationBar
+import com.a27.liftlab.lift.presentation.home_route.diet_plan.dietPlanScreen
+import com.a27.liftlab.lift.presentation.home_route.diet_plan.navigateToDietPlan
+import com.a27.liftlab.lift.presentation.home_route.generate_diet_plan.generateDietPlanScreen
+import com.a27.liftlab.lift.presentation.home_route.generate_diet_plan.navigateToGenerateDietPlan
+import com.a27.liftlab.lift.presentation.home_route.view_diet_plan.navigateToViewDietPlan
+import com.a27.liftlab.lift.presentation.home_route.view_diet_plan.viewDietPlanScreen
+import com.a27.liftlab.lift.presentation.nav_bar.BottomNavigationBar
 import com.a27.liftlab.lift.presentation.home_route.view_workout.navigateToViewWorkout
 import com.a27.liftlab.lift.presentation.home_route.view_workout.viewWorkoutScreen
 import com.a27.liftlab.lift.presentation.navigation.Destination
@@ -74,13 +79,21 @@ class MainActivity : ComponentActivity() {
                             ) {
                                 homeScreen(
                                     onNavigateToViewWorkout = { navController.navigateToViewWorkout() },
-                                    onNavigateToGenerateWorkout = { navController.navigateToGenerateWorkout() }
+                                    onNavigateToGenerateWorkout = { navController.navigateToGenerateWorkout() },
+                                    onNavigateToViewDietPlan = { navController.navigateToViewDietPlan() }
                                 )
                                 viewWorkoutScreen()
                                 generateWorkoutScreen(
                                     onNavigateToWorkoutPlan = { navController.navigateToWorkoutPlan() }
                                 )
                                 workoutPlanScreen()
+                                viewDietPlanScreen(
+                                    onNavigateToGenerateDietPlan = { navController.navigateToGenerateDietPlan() }
+                                )
+                                generateDietPlanScreen(
+                                    onNavigateToDietPlan = { navController.navigateToDietPlan() }
+                                )
+                                dietPlanScreen()
                             }
 
                         }

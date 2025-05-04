@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.a27.liftlab.ui.theme.LiftLabTheme
 
 @Composable
-fun WorkoutItem(
+fun ViewWorkoutItem(
     title: String,
     modifier: Modifier = Modifier
 ) {
@@ -41,6 +41,6 @@ fun WorkoutItem(
 @Composable
 private fun WorkoutItemPreview() {
     LiftLabTheme {
-        WorkoutItem("Workout item")
+        ViewWorkoutItem("Workout item")
     }
 }
