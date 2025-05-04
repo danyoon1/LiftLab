@@ -11,18 +11,24 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.a27.liftlab.lift.presentation.generate_workout.generateWorkoutScreen
-import com.a27.liftlab.lift.presentation.generate_workout.navigateToGenerateWorkout
-import com.a27.liftlab.lift.presentation.home.HomeDestination
-import com.a27.liftlab.lift.presentation.home.homeScreen
-import com.a27.liftlab.lift.presentation.introduction.introductionScreen
-import com.a27.liftlab.lift.presentation.navigation.BottomNavigationBar
-import com.a27.liftlab.lift.presentation.view_workout.ViewWorkoutDestination
-import com.a27.liftlab.lift.presentation.view_workout.navigateToViewWorkout
-import com.a27.liftlab.lift.presentation.view_workout.viewWorkoutScreen
-import com.a27.liftlab.lift.presentation.workout_plan.navigateToWorkoutPlan
-import com.a27.liftlab.lift.presentation.workout_plan.workoutPlanScreen
+import com.a27.liftlab.lift.presentation.home_route.generate_workout.generateWorkoutScreen
+import com.a27.liftlab.lift.presentation.home_route.generate_workout.navigateToGenerateWorkout
+import com.a27.liftlab.lift.presentation.home_route.home.homeScreen
+import com.a27.liftlab.lift.presentation.auth_route.introduction.introductionScreen
+import com.a27.liftlab.lift.presentation.auth_route.login.loginScreen
+import com.a27.liftlab.lift.presentation.auth_route.login.navigateToLoginScreen
+import com.a27.liftlab.lift.presentation.auth_route.sign_up.navigateToSignUpScreen
+import com.a27.liftlab.lift.presentation.auth_route.sign_up.signUpScreen
+import com.a27.liftlab.lift.presentation.home_route.home.navigateToHome
+import com.a27.liftlab.lift.presentation.nav_bar.navigation.BottomNavigationBar
+import com.a27.liftlab.lift.presentation.home_route.view_workout.navigateToViewWorkout
+import com.a27.liftlab.lift.presentation.home_route.view_workout.viewWorkoutScreen
+import com.a27.liftlab.lift.presentation.navigation.Destination
+import com.a27.liftlab.lift.presentation.navigation.SubRoute
+import com.a27.liftlab.lift.presentation.home_route.workout_plan.navigateToWorkoutPlan
+import com.a27.liftlab.lift.presentation.home_route.workout_plan.workoutPlanScreen
 import com.a27.liftlab.ui.theme.LiftLabTheme
 
 class MainActivity : ComponentActivity() {
@@ -45,19 +51,38 @@ class MainActivity : ComponentActivity() {
                     ) { innerPadding ->
                         NavHost(
                             navController = navController,
-                            startDestination = HomeDestination,
+                            startDestination = SubRoute.AuthRoute,
                             modifier = Modifier.padding(innerPadding)
                         ) {
-                            homeScreen(
-                                onNavigateToViewWorkout = { navController.navigateToViewWorkout() },
-                                onNavigateToGenerateWorkout = { navController.navigateToGenerateWorkout() }
-                            )
-                            introductionScreen()
-                            viewWorkoutScreen()
-                            generateWorkoutScreen(
-                                onNavigateToWorkoutPlan = { navController.navigateToWorkoutPlan() }
-                            )
-                            workoutPlanScreen()
+                            navigation<SubRoute.AuthRoute>(
+                                startDestination = Destination.IntroductionDestination
+                            ) {
+                                introductionScreen(
+                                    onNavigateToLogin = { navController.navigateToLoginScreen() },
+                                    onNavigateToSignUp = { navController.navigateToSignUpScreen() }
+                                )
+                                loginScreen(
+                                    onNavigateToHome = { navController.navigate(SubRoute.HomeRoute) }
+                                )
+                                signUpScreen(
+                                    onNavigateToHome = { navController.navigate(SubRoute.HomeRoute) }
+                                )
+                            }
+
+                            navigation<SubRoute.HomeRoute>(
+                                startDestination = Destination.HomeDestination
+                            ) {
+                                homeScreen(
+                                    onNavigateToViewWorkout = { navController.navigateToViewWorkout() },
+                                    onNavigateToGenerateWorkout = { navController.navigateToGenerateWorkout() }
+                                )
+                                viewWorkoutScreen()
+                                generateWorkoutScreen(
+                                    onNavigateToWorkoutPlan = { navController.navigateToWorkoutPlan() }
+                                )
+                                workoutPlanScreen()
+                            }
+
                         }
                     }
                 }
