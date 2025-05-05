@@ -1,7 +1,7 @@
-package com.a27.liftlab.lift.domain.models
+package com.a27.liftlab.lift.data.dto
 
-data class DietPlan(
-    val id: String,
+data class CreateDietRequest(
+    val username: String,
     val name: String,
     val bodyWeight: Int,
     val goal: String,

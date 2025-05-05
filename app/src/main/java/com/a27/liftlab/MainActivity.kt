@@ -120,16 +120,27 @@ class MainActivity : ComponentActivity() {
                                     username = sharedPrefs.getString("username", "").toString()
                                 )
                                 viewDietPlanScreen(
-                                    onNavigateToGenerateDietPlan = { navController.navigateToGenerateDietPlan() }
+                                    username = sharedPrefs.getString("username", "").toString(),
+                                    onNavigateToGenerateDietPlan = { navController.navigateToGenerateDietPlan() },
+                                    onNavigateToDietPlan = {
+                                        sharedPrefs.edit().putString("diet", it).apply()
+                                        navController.navigate(SubRoute.DietRoute)
+                                    }
                                 )
                             }
 
                             navigation<SubRoute.DietRoute>(
                                 startDestination = Destination.DietPlanDestination
                             ) {
-                                dietPlanScreen()
+                                dietPlanScreen(
+                                    sharedPrefs
+                                )
                                 generateDietPlanScreen(
-                                    onNavigateToDietPlan = { navController.navigateToDietPlan() }
+                                    onNavigateToDietPlan = {
+                                        sharedPrefs.edit().putString("diet", it).apply()
+                                        navController.navigate(SubRoute.DietRoute)
+                                    },
+                                    username = sharedPrefs.getString("username", "").toString()
                                 )
                             }
 

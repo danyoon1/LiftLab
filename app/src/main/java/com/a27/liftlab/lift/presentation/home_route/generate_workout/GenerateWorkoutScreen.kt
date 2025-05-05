@@ -20,7 +20,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.a27.liftlab.lift.domain.models.Exercise
@@ -28,7 +27,6 @@ import com.a27.liftlab.lift.presentation.view_models.WorkoutViewModel
 import com.a27.liftlab.lift.presentation.home_route.generate_workout.components.GenerateWorkoutButton
 import com.a27.liftlab.lift.presentation.home_route.generate_workout.components.GenerateWorkoutName
 import com.a27.liftlab.lift.presentation.home_route.generate_workout.components.WorkoutParameter
-import com.a27.liftlab.ui.theme.LiftLabTheme
 import com.example.liftlab.R
 import org.koin.androidx.compose.koinViewModel
 

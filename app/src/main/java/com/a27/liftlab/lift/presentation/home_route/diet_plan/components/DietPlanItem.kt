@@ -24,12 +24,13 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.a27.liftlab.lift.domain.models.DietPlan
+import com.a27.liftlab.lift.presentation.models.DietUi
 import com.a27.liftlab.ui.theme.LiftLabTheme
 import com.example.liftlab.R
 
 @Composable
 fun DietPlanItem(
-    dietPlan: DietPlan,
+    dietUi: DietUi,
     modifier: Modifier = Modifier,
     contentColor: Color = MaterialTheme.colorScheme.onSurface
 ) {
@@ -58,19 +59,19 @@ fun DietPlanItem(
                     )
 
                     Text(
-                        text = "Weight: ${dietPlan.bodyWeight} lbs"
+                        text = "Weight: ${dietUi.bodyWeight} lbs"
                     )
 
                     Text(
-                        text = "Goal: ${dietPlan.goal}"
+                        text = "Goal: ${dietUi.goal}"
                     )
 
                     Text(
-                        text = "Desired Weight: ${dietPlan.desiredWeight} lbs"
+                        text = "Desired Weight: ${dietUi.desiredWeight} lbs"
                     )
 
                     Text(
-                        text = "Time Constraint: ${dietPlan.timeConstraint}"
+                        text = "Time Constraint: ${dietUi.timeConstraint}"
                     )
                 }
             }
@@ -102,7 +103,7 @@ fun DietPlanItem(
                         )
 
                         Text(
-                            text = "${dietPlan.calPerDay} kcal per day"
+                            text = "${dietUi.calPerDay} kcal per day"
                         )
                     }
 
@@ -118,7 +119,7 @@ fun DietPlanItem(
                         )
 
                         Text(
-                            text = "${dietPlan.proteinPerDay} grams of protein per day"
+                            text = "${dietUi.proteinPerDay} grams of protein per day"
                         )
                     }
 
@@ -134,7 +135,7 @@ fun DietPlanItem(
                         )
 
                         Text(
-                            text = "${dietPlan.carbPerDay} grams of carbohydrates per day"
+                            text = "${dietUi.carbPerDay} grams of carbohydrates per day"
                         )
                     }
 
@@ -150,11 +151,11 @@ fun DietPlanItem(
                         )
 
                         Text(
-                            text = "${dietPlan.fatPerDay} grams of fat per day"
+                            text = "${dietUi.fatPerDay} grams of fat per day"
                         )
                     }
 
-                    dietPlan.otherNotes.forEach { note ->
+                    dietUi.otherNotes.forEach { note ->
                         Row(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -174,26 +175,5 @@ fun DietPlanItem(
                 }
             }
         }
-    }
-}
-
-@PreviewLightDark
-@Composable
-private fun DietPlanItemPreview() {
-    LiftLabTheme {
-        DietPlanItem(
-            dietPlan = DietPlan(
-                name = "Get strong plan",
-                bodyWeight = 150,
-                goal = "Get big",
-                desiredWeight = 200,
-                timeConstraint = "3 Months",
-                calPerDay = 3000,
-                proteinPerDay = 200,
-                carbPerDay = 350,
-                fatPerDay = 100,
-                otherNotes = listOf("Eat fruits", "Eat vegetables")
-            )
-        )
     }
 }

@@ -6,11 +6,13 @@ import androidx.navigation.compose.composable
 import com.a27.liftlab.lift.presentation.navigation.Destination
 
 fun NavGraphBuilder.generateDietPlanScreen(
-    onNavigateToDietPlan: () -> Unit
+    onNavigateToDietPlan: (dietId: String) -> Unit,
+    username: String
 ) {
     composable<Destination.GenerateDietPlanDestination> {
         GenerateDietPlanScreen(
-            onNavigateToDietPlan = onNavigateToDietPlan
+            onNavigateToDietPlan = onNavigateToDietPlan,
+            username = username
         )
     }
 }
