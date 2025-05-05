@@ -1,4 +1,4 @@
-package com.a27.liftlab.lift.domain
+package com.a27.liftlab.lift.domain.models
 
 data class DietPlan(
     val name: String,

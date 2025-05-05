@@ -10,26 +10,34 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.a27.liftlab.lift.domain.WorkoutExercise
-import com.a27.liftlab.lift.domain.WorkoutPlan
+import com.a27.liftlab.lift.presentation.home_route.WorkoutViewModel
 import com.a27.liftlab.lift.presentation.home_route.workout_plan.components.WorkoutExerciseItem
-import com.a27.liftlab.ui.theme.LiftLabTheme
-import com.example.liftlab.R
+import com.a27.liftlab.lift.presentation.models.WorkoutUi
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun WorkoutPlanScreen(
-    workoutPlan: WorkoutPlan,
     modifier: Modifier = Modifier,
+    viewModel: WorkoutViewModel = koinViewModel<WorkoutViewModel>(),
     contentColor: Color = MaterialTheme.colorScheme.onSurface,
 ) {
+    val workoutUi by viewModel.workout.collectAsState();
+
+//    LaunchedEffect(Unit) {
+//        viewModel.loadWorkout(
+//            username = "ddy3284@nyu.edu",
+//            workoutId = "id1"
+//        )
+//    }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -51,7 +59,7 @@ fun WorkoutPlanScreen(
         Spacer(modifier = Modifier.padding(20.dp))
 
         Text(
-            text = "Name: ${workoutPlan.name}",
+            text = "Name: ${workoutUi?.name}",
             color = contentColor,
             fontSize = 30.sp,
             modifier = Modifier
@@ -59,7 +67,7 @@ fun WorkoutPlanScreen(
         )
 
         Text(
-            text = "Difficulty: ${workoutPlan.difficulty}",
+            text = "Difficulty: ${workoutUi?.difficulty}",
             color = contentColor,
             fontSize = 30.sp,
             modifier = Modifier
@@ -68,42 +76,9 @@ fun WorkoutPlanScreen(
 
         Spacer(modifier = Modifier.padding(20.dp))
 
-        workoutPlan.exercises.forEach {
+        workoutUi?.exercises?.forEach {
             WorkoutExerciseItem(it)
             HorizontalDivider()
         }
-    }
-}
-
-@PreviewLightDark
-@Composable
-private fun WorkoutPlanScreenPreview() {
-    LiftLabTheme {
-        WorkoutPlanScreen(
-            WorkoutPlan(
-                name = "Push Day",
-                difficulty = "Intermediate",
-                exercises = listOf(
-                    WorkoutExercise(
-                        name = "Curls",
-                        reps = 5,
-                        sets = 3,
-                        icon = ImageVector.vectorResource(R.drawable.dumbbell_simple)
-                    ),
-                    WorkoutExercise(
-                        name = "Curls",
-                        reps = 5,
-                        sets = 3,
-                        icon = ImageVector.vectorResource(R.drawable.dumbbell_simple)
-                    ),
-                    WorkoutExercise(
-                        name = "Curls",
-                        reps = 5,
-                        sets = 3,
-                        icon = ImageVector.vectorResource(R.drawable.dumbbell_simple)
-                    )
-                )
-            )
-        )
     }
 }

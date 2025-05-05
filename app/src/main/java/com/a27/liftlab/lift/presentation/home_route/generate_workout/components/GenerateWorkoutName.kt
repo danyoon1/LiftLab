@@ -20,10 +20,10 @@ import com.a27.liftlab.ui.theme.LiftLabTheme
 
 @Composable
 fun GenerateWorkoutName(
+    value: String,
+    onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var name by remember { mutableStateOf("") }
-
     Column(
         modifier = modifier
             .padding(12.dp)
@@ -35,17 +35,9 @@ fun GenerateWorkoutName(
         )
 
         OutlinedTextField(
-            value = name,
-            onValueChange = {name = it},
+            value = value,
+            onValueChange = onValueChange,
             label = {Text("(Required)")}
         )
-    }
-}
-
-@PreviewLightDark
-@Composable
-private fun GenerateWorkoutNamePreview() {
-    LiftLabTheme {
-        GenerateWorkoutName()
     }
 }

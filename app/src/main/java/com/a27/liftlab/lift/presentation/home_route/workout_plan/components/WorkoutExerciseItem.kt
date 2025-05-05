@@ -19,16 +19,13 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.a27.liftlab.lift.domain.WorkoutExercise
-import com.a27.liftlab.ui.theme.LiftLabTheme
-import com.example.liftlab.R
+import com.a27.liftlab.lift.presentation.models.ExerciseUi
 
 @Composable
 fun WorkoutExerciseItem(
-    workoutExercise: WorkoutExercise,
+    exerciseUi: ExerciseUi,
     modifier: Modifier = Modifier,
     contentColor: Color = MaterialTheme.colorScheme.onSurface,
 ) {
@@ -47,8 +44,8 @@ fun WorkoutExerciseItem(
             horizontalArrangement = Arrangement.Start
         ) {
             Icon(
-                imageVector = workoutExercise.icon,
-                contentDescription = workoutExercise.name,
+                imageVector = ImageVector.vectorResource(exerciseUi.iconRes),
+                contentDescription = exerciseUi.name,
                 modifier = Modifier
                     .size(100.dp)
                     .padding(12.dp)
@@ -59,7 +56,7 @@ fun WorkoutExerciseItem(
                 horizontalAlignment = Alignment.Start
             ) {
                 Text(
-                    text = workoutExercise.name,
+                    text = exerciseUi.name,
                     color = contentColor,
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Black,
@@ -67,27 +64,12 @@ fun WorkoutExerciseItem(
                 )
 
                 Text(
-                    text = "${workoutExercise.reps} Repetitions / ${workoutExercise.sets} Sets",
+                    text = "${exerciseUi.reps} Repetitions / ${exerciseUi.sets} Sets",
                     color = contentColor,
                     fontSize = 20.sp,
                     modifier = Modifier.padding(12.dp)
                 )
             }
         }
-    }
-}
-
-@PreviewLightDark
-@Composable
-private fun WorkoutExerciseItemPreview() {
-    LiftLabTheme {
-        WorkoutExerciseItem(
-            workoutExercise = WorkoutExercise(
-                name = "Curls",
-                reps = 5,
-                sets = 3,
-                icon = ImageVector.vectorResource(R.drawable.dumbbell_simple)
-            )
-        )
     }
 }

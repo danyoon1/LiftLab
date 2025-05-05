@@ -1,7 +1,7 @@
 package com.a27.liftlab.lift.presentation.home_route.diet_plan
 
 import androidx.compose.runtime.Composable
-import com.a27.liftlab.lift.domain.DietPlan
+import com.a27.liftlab.lift.domain.models.DietPlan
 import com.a27.liftlab.lift.presentation.home_route.diet_plan.components.DietPlanItem
 
 @Composable

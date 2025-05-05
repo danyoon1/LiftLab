@@ -23,7 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.a27.liftlab.lift.domain.DietPlan
+import com.a27.liftlab.lift.domain.models.DietPlan
 import com.a27.liftlab.ui.theme.LiftLabTheme
 import com.example.liftlab.R
 

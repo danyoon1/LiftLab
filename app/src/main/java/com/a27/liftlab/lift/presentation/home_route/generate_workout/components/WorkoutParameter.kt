@@ -1,6 +1,5 @@
 package com.a27.liftlab.lift.presentation.home_route.generate_workout.components
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -37,6 +36,8 @@ fun WorkoutParameter(
     title: String,
     icon: ImageVector,
     dropdownOptions: List<String>,
+    selectedOption: String,
+    onOptionSelected: (String) -> Unit,
     modifier: Modifier = Modifier,
     contentColor: Color = MaterialTheme.colorScheme.onSurface,
 ) {
@@ -69,7 +70,6 @@ fun WorkoutParameter(
                 )
 
                 var expanded by remember { mutableStateOf(false) }
-                var selectedOption by remember { mutableStateOf(dropdownOptions[0]) }
 
                 ExposedDropdownMenuBox(
                     expanded = expanded,
@@ -91,7 +91,7 @@ fun WorkoutParameter(
                             DropdownMenuItem(
                                 text = { Text(option) },
                                 onClick = {
-                                    selectedOption = option
+                                    onOptionSelected(option)
                                     expanded = false
                                 }
                             )
@@ -100,17 +100,5 @@ fun WorkoutParameter(
                 }
             }
         }
-    }
-}
-
-@PreviewLightDark
-@Composable
-private fun WorkoutParameterPreview() {
-    LiftLabTheme {
-        WorkoutParameter(
-            title = "Goal",
-            icon = ImageVector.vectorResource(R.drawable.target),
-            dropdownOptions = listOf("Cardio", "Build Muscle", "Have Fun")
-        )
     }
 }
