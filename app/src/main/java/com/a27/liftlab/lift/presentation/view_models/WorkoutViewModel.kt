@@ -1,14 +1,12 @@
-package com.a27.liftlab.lift.presentation.home_route
+package com.a27.liftlab.lift.presentation.view_models
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.a27.liftlab.lift.domain.models.Exercise
-import com.a27.liftlab.lift.domain.models.Workout
 import com.a27.liftlab.lift.domain.repository.WorkoutRepository
 import com.a27.liftlab.lift.presentation.models.ExerciseUi
 import com.a27.liftlab.lift.presentation.models.WorkoutUi
-import com.a27.liftlab.lift.presentation.models.toExerciseUi
 import com.a27.liftlab.lift.presentation.models.toWorkoutUi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

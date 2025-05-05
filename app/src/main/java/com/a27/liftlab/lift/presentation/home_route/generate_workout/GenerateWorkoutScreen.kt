@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.a27.liftlab.lift.domain.models.Exercise
-import com.a27.liftlab.lift.presentation.home_route.WorkoutViewModel
+import com.a27.liftlab.lift.presentation.view_models.WorkoutViewModel
 import com.a27.liftlab.lift.presentation.home_route.generate_workout.components.GenerateWorkoutButton
 import com.a27.liftlab.lift.presentation.home_route.generate_workout.components.GenerateWorkoutName
 import com.a27.liftlab.lift.presentation.home_route.generate_workout.components.WorkoutParameter

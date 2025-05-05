@@ -18,13 +18,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.a27.liftlab.lift.presentation.home_route.WorkoutViewModel
+import com.a27.liftlab.lift.presentation.view_models.WorkoutViewModel
 import com.a27.liftlab.lift.presentation.home_route.view_workout.components.ViewWorkoutButton
 import com.a27.liftlab.lift.presentation.home_route.view_workout.components.ViewWorkoutItem
 import com.a27.liftlab.ui.theme.LiftLabTheme
 import org.koin.androidx.compose.koinViewModel
-import org.koin.androidx.compose.viewModel
 
 @Composable
 fun ViewWorkoutScreen(

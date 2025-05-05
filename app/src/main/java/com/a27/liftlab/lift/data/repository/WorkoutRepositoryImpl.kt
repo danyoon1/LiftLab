@@ -21,6 +21,8 @@ class WorkoutRepositoryImpl(
     }
 
     override suspend fun getWorkout(username: String, workoutId: String): Workout {
+        Log.i("get workout username", username)
+        Log.i("get workout Id", workoutId)
         return api.loadWorkout(username, workoutId).selectedWorkout.toDomain()
     }
 

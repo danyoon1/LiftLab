@@ -15,7 +15,7 @@ interface WorkoutApi {
     @GET("workout/loadWorkout")
     suspend fun loadWorkout(
         @Query("username") username: String,
-        @Query("workout") workoutId: String
+        @Query("workoutId") workoutId: String
     ): LoadWorkoutResponse
 
     @POST("workout/updateWorkout")

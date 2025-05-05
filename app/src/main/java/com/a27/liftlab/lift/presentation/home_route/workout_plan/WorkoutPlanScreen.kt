@@ -18,9 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.a27.liftlab.lift.presentation.home_route.WorkoutViewModel
+import com.a27.liftlab.lift.presentation.view_models.WorkoutViewModel
 import com.a27.liftlab.lift.presentation.home_route.workout_plan.components.WorkoutExerciseItem
-import com.a27.liftlab.lift.presentation.models.WorkoutUi
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -31,12 +30,12 @@ fun WorkoutPlanScreen(
 ) {
     val workoutUi by viewModel.workout.collectAsState();
 
-//    LaunchedEffect(Unit) {
-//        viewModel.loadWorkout(
-//            username = "ddy3284@nyu.edu",
-//            workoutId = "id1"
-//        )
-//    }
+    LaunchedEffect(Unit) {
+        viewModel.loadWorkout(
+            username = "ddy3284@nyu.edu",
+            workoutId = "68184b17b57b1962283a7743"
+        )
+    }
 
     Column(
         modifier = modifier
