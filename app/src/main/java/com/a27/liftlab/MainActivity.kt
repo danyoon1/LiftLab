@@ -122,10 +122,15 @@ class MainActivity : ComponentActivity() {
                                 viewDietPlanScreen(
                                     onNavigateToGenerateDietPlan = { navController.navigateToGenerateDietPlan() }
                                 )
+                            }
+
+                            navigation<SubRoute.DietRoute>(
+                                startDestination = Destination.DietPlanDestination
+                            ) {
+                                dietPlanScreen()
                                 generateDietPlanScreen(
                                     onNavigateToDietPlan = { navController.navigateToDietPlan() }
                                 )
-                                dietPlanScreen()
                             }
 
                             navigation<SubRoute.WorkoutRoute>(

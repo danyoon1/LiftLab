@@ -13,6 +13,9 @@ sealed class SubRoute {
     @Serializable
     data object WorkoutRoute: SubRoute()
 
+    @Serializable
+    data object DietRoute: SubRoute()
+
 }
 
 sealed class Destination {
