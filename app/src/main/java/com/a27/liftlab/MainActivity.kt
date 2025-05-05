@@ -113,7 +113,10 @@ class MainActivity : ComponentActivity() {
                                     }
                                 )
                                 generateWorkoutScreen(
-                                    onNavigateToWorkoutPlan = { navController.navigate(SubRoute.WorkoutRoute) },
+                                    onNavigateToWorkoutPlan = {
+                                        sharedPrefs.edit().putString("workout", it).apply()
+                                        navController.navigate(SubRoute.WorkoutRoute)
+                                    },
                                     username = sharedPrefs.getString("username", "").toString()
                                 )
                                 viewDietPlanScreen(

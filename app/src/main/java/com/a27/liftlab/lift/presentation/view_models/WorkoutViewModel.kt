@@ -48,12 +48,13 @@ class WorkoutViewModel(
         }
     }
 
-    fun createWorkout(username: String, name: String, difficulty: String, exercises: List<Exercise>) {
+    fun createWorkout(username: String, name: String, difficulty: String, exercises: List<Exercise>, onResult: (String) -> Unit) {
         viewModelScope.launch {
             try {
-                Log.i("new workout","new workout created")
                 val id = repository.createWorkout(username, name, difficulty, exercises)
+                Log.i("new workout",id)
                 _createdWorkoutId.value = id
+                onResult(id)
             } catch (e: Exception) {
                 _createdWorkoutId.value = "error"
             }

@@ -1,5 +1,6 @@
 package com.a27.liftlab.lift.presentation.home_route.generate_workout
 
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -32,12 +34,14 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun GenerateWorkoutScreen(
-    onNavigateToWorkoutPlan: () -> Unit,
+    onNavigateToWorkoutPlan: (workoutId: String) -> Unit,
     username: String,
     modifier: Modifier = Modifier,
     viewModel: WorkoutViewModel = koinViewModel<WorkoutViewModel>(),
     contentColor: Color = MaterialTheme.colorScheme.onSurface
 ) {
+    val createdWorkoutId by viewModel.createdWorkoutId.collectAsState()
+
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -107,7 +111,6 @@ fun GenerateWorkoutScreen(
             GenerateWorkoutButton(
                 title = "Generate Workout",
                 onAction = {
-                    onNavigateToWorkoutPlan()
                     viewModel.createWorkout(
                         username = username,
                         difficulty = "insane",
@@ -115,18 +118,21 @@ fun GenerateWorkoutScreen(
                         exercises = listOf(
                             Exercise(
                                 id = "id1",
-                                name = "dry humps",
+                                name = "squats",
                                 reps = 10,
                                 sets = 5
                             ),
                             Exercise(
                                 id = "id2",
-                                name = "bench",
+                                name = "push ups",
                                 reps = 15,
                                 sets = 3
                             )
                         )
-                    )
+                    ) { successId ->
+                        Log.i("sending workout id...", successId)
+                        onNavigateToWorkoutPlan(successId)
+                    }
                 }
             )
         }
