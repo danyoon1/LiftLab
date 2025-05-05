@@ -9,13 +9,15 @@ import kotlinx.serialization.Serializable
 fun NavGraphBuilder.homeScreen(
     onNavigateToViewWorkout: () -> Unit,
     onNavigateToGenerateWorkout: () -> Unit,
-    onNavigateToViewDietPlan: () -> Unit
+    onNavigateToViewDietPlan: () -> Unit,
+    onNavigateToCreateWorkout: () -> Unit,
 ) {
     composable<Destination.HomeDestination> {
         HomeScreen(
             onNavigateToViewWorkout = onNavigateToViewWorkout,
             onNavigateToGenerateWorkout = onNavigateToGenerateWorkout,
-            onNavigateToViewDietPlan = onNavigateToViewDietPlan
+            onNavigateToViewDietPlan = onNavigateToViewDietPlan,
+            onNavigateToCreateWorkout = onNavigateToCreateWorkout,
         )
     }
 }

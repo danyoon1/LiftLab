@@ -42,6 +42,15 @@ sealed class Destination {
     data object GenerateDietPlanDestination: Destination()
 
     @Serializable
+    data object CreateWorkoutDestination: Destination()
+
+    @Serializable
     data object DietPlanDestination: Destination()
+
+    @Serializable
+    data object SelectExerciseDestination: Destination()
+
+    @Serializable
+    data object WorkoutEntryDestination: Destination()
 
 }

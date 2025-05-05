@@ -68,4 +68,12 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.okhttp.logging)
+
+
+    implementation (libs.androidx.lifecycle.viewmodel.compose)
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.ui)
+    implementation (libs.tensorflow.lite)
+    implementation (libs.tensorflow.lite.support)
+
 }

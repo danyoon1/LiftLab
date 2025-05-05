@@ -29,6 +29,7 @@ fun HomeScreen(
     onNavigateToViewWorkout: () -> Unit,
     onNavigateToGenerateWorkout: () -> Unit,
     onNavigateToViewDietPlan: () -> Unit,
+    onNavigateToCreateWorkout: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -68,9 +69,17 @@ fun HomeScreen(
         )
 
         HomeButton(
+            title = "Create Workout",
+            onAction = onNavigateToCreateWorkout
+        )
+
+        HomeButton(
             title = "View Diet Plans",
             onAction = onNavigateToViewDietPlan
         )
+
+
+
     }
 }
 
@@ -81,7 +90,8 @@ private fun HomeScreenPreview() {
         HomeScreen(
             onNavigateToViewWorkout = {},
             onNavigateToGenerateWorkout = {},
-            onNavigateToViewDietPlan = {}
+            onNavigateToViewDietPlan = {},
+            onNavigateToCreateWorkout = {}
         )
     }
 }

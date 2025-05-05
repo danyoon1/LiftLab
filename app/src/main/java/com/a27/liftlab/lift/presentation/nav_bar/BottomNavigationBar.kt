@@ -31,7 +31,7 @@ fun BottomNavigationBar(
             selectedIcon = Icons.Filled.Home,
             unselectedIcon = Icons.Outlined.Home,
             hasNews = false,
-            navigationId = SubRoute.HomeRoute
+            navigationId = SubRoute.AuthRoute
         ),
         BottomNavigationItem(
             title = "Progress",

@@ -34,6 +34,12 @@ import com.a27.liftlab.lift.presentation.navigation.Destination
 import com.a27.liftlab.lift.presentation.navigation.SubRoute
 import com.a27.liftlab.lift.presentation.home_route.workout_plan.navigateToWorkoutPlan
 import com.a27.liftlab.lift.presentation.home_route.workout_plan.workoutPlanScreen
+import com.a27.liftlab.lift.presentation.home_route.create_workout.navigateToCreateWorkout
+import com.a27.liftlab.lift.presentation.home_route.create_workout.createWorkoutScreen
+import com.a27.liftlab.lift.presentation.home_route.create_workout.navigateToSelectExercise
+import com.a27.liftlab.lift.presentation.home_route.create_workout.navigateToWorkoutEntry
+import com.a27.liftlab.lift.presentation.home_route.create_workout.selectExerciseScreen
+import com.a27.liftlab.lift.presentation.home_route.create_workout.workoutEntryScreen
 import com.a27.liftlab.ui.theme.LiftLabTheme
 
 class MainActivity : ComponentActivity() {
@@ -80,9 +86,17 @@ class MainActivity : ComponentActivity() {
                                 homeScreen(
                                     onNavigateToViewWorkout = { navController.navigateToViewWorkout() },
                                     onNavigateToGenerateWorkout = { navController.navigateToGenerateWorkout() },
-                                    onNavigateToViewDietPlan = { navController.navigateToViewDietPlan() }
+                                    onNavigateToViewDietPlan = { navController.navigateToViewDietPlan() },
+                                    onNavigateToCreateWorkout = { navController.navigateToCreateWorkout() },
                                 )
                                 viewWorkoutScreen()
+                                createWorkoutScreen(
+                                    onNavigateToWorkoutEntry = { workoutLength, restPeriod ->  navController.navigateToWorkoutEntry(workoutLength, restPeriod) }
+                                )
+                                workoutEntryScreen(30, 45, onSelectEntry = { index -> navController.navigateToSelectExercise()})
+                                selectExerciseScreen(
+                                    onExerciseSelected = {navController.navigateToSelectExercise()}
+                                )
                                 generateWorkoutScreen(
                                     onNavigateToWorkoutPlan = { navController.navigateToWorkoutPlan() }
                                 )
