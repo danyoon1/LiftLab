@@ -33,6 +33,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun GenerateWorkoutScreen(
     onNavigateToWorkoutPlan: () -> Unit,
+    username: String,
     modifier: Modifier = Modifier,
     viewModel: WorkoutViewModel = koinViewModel<WorkoutViewModel>(),
     contentColor: Color = MaterialTheme.colorScheme.onSurface
@@ -108,7 +109,7 @@ fun GenerateWorkoutScreen(
                 onAction = {
                     onNavigateToWorkoutPlan()
                     viewModel.createWorkout(
-                        username = "ddy3284@nyu.edu",
+                        username = username,
                         difficulty = "insane",
                         name = "get big workout",
                         exercises = listOf(
@@ -129,13 +130,5 @@ fun GenerateWorkoutScreen(
                 }
             )
         }
-    }
-}
-
-@PreviewLightDark
-@Composable
-private fun GenerateWorkoutScreenPreview() {
-    LiftLabTheme {
-        GenerateWorkoutScreen({})
     }
 }

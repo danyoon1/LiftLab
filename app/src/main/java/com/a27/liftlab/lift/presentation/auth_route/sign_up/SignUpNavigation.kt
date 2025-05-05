@@ -6,11 +6,13 @@ import androidx.navigation.compose.composable
 import com.a27.liftlab.lift.presentation.navigation.Destination
 
 fun NavGraphBuilder.signUpScreen(
-    onNavigateToHome: () -> Unit
+    onNavigateToHome: () -> Unit,
+    onSignUpSuccessful: (username: String) -> Unit
 ) {
     composable<Destination.SignUpDestination> {
         SignUpScreen(
-            onNavigateToHome = onNavigateToHome
+            onNavigateToHome = onNavigateToHome,
+            onSignUpSuccessful = onSignUpSuccessful
         )
     }
 }

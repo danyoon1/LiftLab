@@ -1,5 +1,6 @@
 package com.a27.liftlab.lift.presentation.auth_route.login
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
@@ -25,6 +26,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun LoginScreen(
     onNavigateToHome: () -> Unit,
+    onLoginSuccessful: (username: String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: AuthViewModel = koinViewModel<AuthViewModel>(),
     contentColor: Color = MaterialTheme.colorScheme.onSurface
@@ -81,11 +83,14 @@ fun LoginScreen(
         LoginButton(
             title = "Login",
             onAction = {
+                Log.i("logging in", username)
                 viewModel.login(
                     user = username,
                     password = password
                 ) { success ->
                     if (success) {
+                        onLoginSuccessful(username)
+                        Log.i("user logged in:", username)
                         onNavigateToHome()
                     }
                 }

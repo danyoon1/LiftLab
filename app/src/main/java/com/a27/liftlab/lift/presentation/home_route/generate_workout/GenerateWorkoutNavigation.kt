@@ -8,11 +8,13 @@ import com.a27.liftlab.lift.presentation.navigation.SubRoute
 import kotlinx.serialization.Serializable
 
 fun NavGraphBuilder.generateWorkoutScreen(
-    onNavigateToWorkoutPlan: () -> Unit
+    onNavigateToWorkoutPlan: () -> Unit,
+    username: String
 ) {
     composable<Destination.GenerateWorkoutDestination> {
         GenerateWorkoutScreen(
-            onNavigateToWorkoutPlan = onNavigateToWorkoutPlan
+            onNavigateToWorkoutPlan = onNavigateToWorkoutPlan,
+            username = username
         )
     }
 }

@@ -1,6 +1,7 @@
 package com.a27.liftlab.lift.presentation.home_route.view_workout.components
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -16,11 +17,15 @@ import com.a27.liftlab.ui.theme.LiftLabTheme
 @Composable
 fun ViewWorkoutItem(
     title: String,
+    onSelectedWorkout: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Card(
         modifier = modifier
-            .padding(50.dp),
+            .padding(50.dp)
+            .clickable {
+                onSelectedWorkout()
+            },
         shape = RectangleShape,
         border = BorderStroke(
             width = 1.dp,
@@ -34,13 +39,5 @@ fun ViewWorkoutItem(
         Text(
             text = title
         )
-    }
-}
-
-@Preview
-@Composable
-private fun WorkoutItemPreview() {
-    LiftLabTheme {
-        ViewWorkoutItem("Workout item")
     }
 }

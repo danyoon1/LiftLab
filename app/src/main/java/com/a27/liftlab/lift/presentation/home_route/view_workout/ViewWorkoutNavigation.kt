@@ -6,9 +6,15 @@ import androidx.navigation.compose.composable
 import com.a27.liftlab.lift.presentation.navigation.Destination
 import kotlinx.serialization.Serializable
 
-fun NavGraphBuilder.viewWorkoutScreen() {
+fun NavGraphBuilder.viewWorkoutScreen(
+    username: String,
+    onNavigateToWorkoutPlan: (workoutId: String) -> Unit
+) {
     composable<Destination.ViewWorkoutDestination> {
-        ViewWorkoutScreen()
+        ViewWorkoutScreen(
+            username = username,
+            onNavigateToWorkoutPlan = onNavigateToWorkoutPlan
+        )
     }
 }
 

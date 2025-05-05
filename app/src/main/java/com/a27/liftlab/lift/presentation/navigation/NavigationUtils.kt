@@ -10,6 +10,9 @@ sealed class SubRoute {
     @Serializable
     data object HomeRoute: SubRoute()
 
+    @Serializable
+    data object WorkoutRoute: SubRoute()
+
 }
 
 sealed class Destination {

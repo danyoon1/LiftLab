@@ -1,5 +1,7 @@
 package com.a27.liftlab.lift.presentation.home_route.workout_plan
 
+import android.content.SharedPreferences
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -24,6 +26,9 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun WorkoutPlanScreen(
+//    username: String,
+//    workoutId: String,
+    sharedPrefs: SharedPreferences,
     modifier: Modifier = Modifier,
     viewModel: WorkoutViewModel = koinViewModel<WorkoutViewModel>(),
     contentColor: Color = MaterialTheme.colorScheme.onSurface,
@@ -32,10 +37,12 @@ fun WorkoutPlanScreen(
 
     LaunchedEffect(Unit) {
         viewModel.loadWorkout(
-            username = "ddy3284@nyu.edu",
-            workoutId = "68184b17b57b1962283a7743"
+            username = sharedPrefs.getString("username", "").toString(),
+            workoutId = sharedPrefs.getString("workout", "").toString()
         )
     }
+
+    Log.i("workoutId", sharedPrefs.getString("workout", "").toString())
 
     Column(
         modifier = modifier

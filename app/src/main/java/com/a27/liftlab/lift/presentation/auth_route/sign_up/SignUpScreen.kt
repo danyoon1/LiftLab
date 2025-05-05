@@ -1,5 +1,6 @@
 package com.a27.liftlab.lift.presentation.auth_route.sign_up
 
+import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
@@ -26,6 +27,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun SignUpScreen(
     onNavigateToHome: () -> Unit,
+    onSignUpSuccessful: (username: String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: AuthViewModel = koinViewModel<AuthViewModel>(),
     contentColor: Color = MaterialTheme.colorScheme.onSurface
@@ -104,6 +106,7 @@ fun SignUpScreen(
                         password = password
                     ) { success ->
                         if (success) {
+                            onSignUpSuccessful(username)
                             onNavigateToHome()
                         }
                     }

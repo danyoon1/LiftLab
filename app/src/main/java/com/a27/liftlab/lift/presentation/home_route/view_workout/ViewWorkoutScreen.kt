@@ -1,5 +1,6 @@
 package com.a27.liftlab.lift.presentation.home_route.view_workout
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,6 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,6 +30,8 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ViewWorkoutScreen(
+    username: String,
+    onNavigateToWorkoutPlan: (workoutId: String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: WorkoutViewModel = koinViewModel<WorkoutViewModel>(),
     contentColor: Color = MaterialTheme.colorScheme.onSurface
@@ -35,7 +41,7 @@ fun ViewWorkoutScreen(
     val workouts by viewModel.workouts.collectAsState()
 
     LaunchedEffect(Unit) {
-        viewModel.loadWorkouts("ddy3284@nyu.edu")
+        viewModel.loadWorkouts(username)
     }
 
     Column (
@@ -56,19 +62,16 @@ fun ViewWorkoutScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(workouts) { item ->
-                ViewWorkoutItem(item.name)
+                ViewWorkoutItem(
+                    title = item.name,
+                    onSelectedWorkout = {
+                        onNavigateToWorkoutPlan(item.id)
+                    }
+                )
                 HorizontalDivider()
             }
         }
 
         ViewWorkoutButton("View Schedule")
-    }
-}
-
-@PreviewLightDark
-@Composable
-private fun ViewWorkoutScreenPreview() {
-    LiftLabTheme {
-        ViewWorkoutScreen()
     }
 }
